@@ -33,7 +33,7 @@ public class SwapiRestClient {
 	
 		// Result
 		ResponseEntity<Results> apiResponse = restTemplate.getForEntity(apiUrl, Results.class);
-		if (apiResponse.getStatusCodeValue() == 200){
+		if (apiResponse.getStatusCode().is2xxSuccessful()){
 			return apiResponse.getBody();
 		} else {
 			log.error("Exception caused by not OK response", apiResponse.getBody()); 
